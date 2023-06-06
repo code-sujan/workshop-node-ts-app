@@ -23,10 +23,8 @@ class Student extends Model{
 
     @BelongsTo(() => User)
     user! : User
-
-    @BelongsToMany(() => Book, () => StudentBook)
-    books! : Book[]
 }
+    
 sequelize.addModels([Student]);
 Student.sync({alter : true});
 export default Student;

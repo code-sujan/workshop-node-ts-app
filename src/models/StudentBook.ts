@@ -1,4 +1,4 @@
-import { AutoIncrement, BelongsTo, Column, ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AutoIncrement, BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
 import sequelize from "../../sequelize-config";
 import Book from "./Book";
 import Student from "./Student";
@@ -23,6 +23,9 @@ class StudentBook extends Model{
 
     @BelongsTo(() => Book)
     book! : Book
+
+    @Column
+    isReturned! : boolean
 
 }
 sequelize.addModels([StudentBook]);

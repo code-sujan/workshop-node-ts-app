@@ -16,8 +16,6 @@ class Book extends Model{
     @Column
     author! : string
 
-    @BelongsToMany(() => Student, () => StudentBook)
-    students! : Student[]
 }
 sequelize.addModels([Book]);
 Book.sync({alter : true});

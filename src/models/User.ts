@@ -1,5 +1,6 @@
-import { AutoIncrement, Column, DataType, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AutoIncrement, Column, DataType, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
 import sequelize from "../../sequelize-config";
+import Student from "./Student";
 
 @Table({tableName : "users"})
 class User extends Model{
@@ -21,6 +22,7 @@ class User extends Model{
         type: DataType.TEXT
     })
     password!: string;
+
 }
 
 sequelize.addModels([User]);
