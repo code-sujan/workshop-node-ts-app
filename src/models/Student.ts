@@ -1,6 +1,8 @@
-import { AutoIncrement, BelongsTo, Column, ForeignKey, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AutoIncrement, BelongsTo, BelongsToMany, Column, ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
 import User from "./User";
 import sequelize from "../../sequelize-config";
+import Book from "./Book";
+import StudentBook from "./StudentBook";
 
 @Table({tableName: "students"})
 class Student extends Model{
@@ -21,6 +23,9 @@ class Student extends Model{
 
     @BelongsTo(() => User)
     user! : User
+
+    @BelongsToMany(() => Book, () => StudentBook)
+    books! : Book[]
 }
 sequelize.addModels([Student]);
 Student.sync({alter : true});
