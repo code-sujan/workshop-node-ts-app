@@ -1,4 +1,4 @@
-import { AutoIncrement, Column, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AutoIncrement, BelongsTo, Column, ForeignKey, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
 import User from "./User";
 import sequelize from "../../sequelize-config";
 
@@ -18,6 +18,10 @@ class Student extends Model{
     @ForeignKey(() => User)
     @Column
     userId! : number
+
+    @BelongsTo(() => User)
+    user! : User
 }
 sequelize.addModels([Student]);
+Student.sync({alter : true});
 export default Student;
